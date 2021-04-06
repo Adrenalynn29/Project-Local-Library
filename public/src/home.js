@@ -51,16 +51,16 @@ function getMostCommonGenres(books) {
 }
 
 function getMostPopularBooks(books) {
-  const result = books.map((book) => {
-      const popularity = {
-          name: book.title,
-          count: book.borrows.length,
-      };
-      return popularity;
-  });
-  return result.sort((titleA, titleB) => titleB.count - titleA.count).slice(0, 5)
+    const result = books.reduce((accumulator, book) => {
+        const popularity = {
+            name: book.title,
+            count: book.borrows.length,
+        };
+        accumulator.push(popularity);
+        return accumulator;
+    }, []);
+    return result.sort((titleA, titleB) => titleB.count - titleA.count).slice(0, 5);
 }
-
 
 function getMostPopularAuthors(books, authors) {
   topAuthors = [];

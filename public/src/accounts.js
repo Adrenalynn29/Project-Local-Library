@@ -23,7 +23,7 @@ function getTotalNumberOfBorrows(account, books) {
   for (let book of books) {
       book.borrows.forEach((borrows) => {
           if (borrows.id === account.id);
-          result += 1
+          result ++
       })
       return result
   }
